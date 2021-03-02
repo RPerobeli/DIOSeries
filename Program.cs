@@ -34,6 +34,7 @@ namespace DIOSeries
                     default:
                         throw new ArgumentOutOfRangeException();
                 }
+                opcaoUsuario = ObterOpcaoUsuario();
             }
         }
         private static void ListarSeries()
@@ -47,7 +48,11 @@ namespace DIOSeries
             }
             foreach(var serie in lista)
             {
-                Console.WriteLine("#ID {0}: {1}", serie.GetId(), serie.GetTitulo());
+                if(!serie.GetExcluido())
+                {
+                    Console.WriteLine("#ID {0}: {1}", serie.GetId(), serie.GetTitulo());
+                }
+                
             }
         }
 
